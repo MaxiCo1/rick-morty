@@ -1,0 +1,12 @@
+.fondo{
+    background-image: url(../../assets/fondo-3.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.search-bar{
+    position: absolute;
+    bottom: 8%;
+    right: 30%;
+    width: 40%;
+}

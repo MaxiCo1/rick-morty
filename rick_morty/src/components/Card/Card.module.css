@@ -1,0 +1,21 @@
+.contenido{
+    background-color: rgb(32, 35, 41);
+    color: white;
+    padding: 2em .5em;
+}
+.contenido div div p a{
+    color: white;
+    font-weight: bold;
+}
+.contenido div div p a:hover, ul li a:hover{
+    color: rgb(255, 152, 0);
+}
+.contenido p{
+    text-align: center;
+}
+ul li{
+    list-style-type: none;
+}
+ul li a{
+    color: white;
+}

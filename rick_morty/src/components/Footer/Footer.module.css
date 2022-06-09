@@ -1,0 +1,22 @@
+.footer{
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+}
+.footer ul{
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
+    
+}
+
+.footer ul li img{
+    filter: brightness(0) saturate(100%) invert(68%) sepia(3%) saturate(25%) hue-rotate(13deg) brightness(93%) contrast(86%);
+    height: 3vh;
+
+}
+
+.footer ul li img:hover{
+    filter: brightness(0) saturate(100%) invert(53%) sepia(87%) saturate(565%) hue-rotate(357deg) brightness(101%) contrast(110%);
+    cursor: pointer;
+}
