@@ -10,3 +10,6 @@
     right: 30%;
     width: 40%;
 }
+.search-bar input{
+    border-radius: 9999px;
+}

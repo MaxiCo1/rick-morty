@@ -8,9 +8,9 @@ const Footer = () => {
   return (
     <footer className={styles["footer"]}>
         <ul>
-            <li><img src={twitter} alt="" /></li>
-            <li><img src={facebook} alt="" /></li>
-            <li><img src={instagram} alt="" /></li>
+            <li><a href='https://twitter.com/RickandMorty'><img src={twitter} alt="" /></a></li>
+            <li><a href='https://www.facebook.com/RickandMorty'><img src={facebook} alt="" /></a></li>
+            <li><a href='https://www.instagram.com/rickandmorty/?hl=es'><img src={instagram} alt="" /></a></li>
         </ul>
         <p>Copyright Year 2022 Maximiliano Coletti </p>
     </footer>

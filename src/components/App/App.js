@@ -10,8 +10,8 @@ import Footer from "../Footer/Footer";
 const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  //const [searchData, setSearchData] = useState(false);
 
-  const random = Math.floor(Math.random() * (1 - 826 + 1));
 
   const getData = useCallback(async (from, to) => {
     try {
@@ -29,11 +29,32 @@ const App = () => {
       console.log("ERROR EN EL CATCH", error);
     }
   }, []);
- 
+
+  //search
+
+  const getSearchData = async (name) =>{
+    try {
+      //setSearchData(true)
+      const response = await axios.get(
+        `https://rickandmortyapi.com/api/character/?name=${name}`
+      );
+      setData(response.data.results);
+    } catch (error) {
+      console.log("ERROR EN EL CATCH", error);
+    }
+  }
+
+  //var cantidad;
 
   useEffect(() => {
-    getData(1, 12);
+    //if(setSearchData === true)
+    getData(1,12);
   }, [getData]);
+ 
+ const handleSearch = (name) =>{ getSearchData(name) }
+  
+
+
 
   return (
     <div>
@@ -42,7 +63,7 @@ const App = () => {
       ) : (
         <div className={styles["fondo"]}>
           <Header />
-          <Hero />
+          <Hero handleSearch={handleSearch}/>
           <div className={styles["contenedor"]}>
             
             <h1>Character cards</h1>
