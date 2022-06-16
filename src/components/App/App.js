@@ -10,8 +10,7 @@ import Footer from "../Footer/Footer";
 const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  //const [searchData, setSearchData] = useState(false);
-
+  const [cantToShow, setCantToShow] = useState(6);
 
   const getData = useCallback(async (from, to) => {
     try {
@@ -32,29 +31,34 @@ const App = () => {
 
   //search
 
-  const getSearchData = async (name) =>{
+  const getSearchData = async (name) => {
     try {
-      //setSearchData(true)
+      setCantToShow(6)
+      setLoading(true);
       const response = await axios.get(
         `https://rickandmortyapi.com/api/character/?name=${name}`
       );
       setData(response.data.results);
+      setLoading(false);
     } catch (error) {
       console.log("ERROR EN EL CATCH", error);
     }
-  }
+  };
 
   //var cantidad;
 
   useEffect(() => {
     //if(setSearchData === true)
-    getData(1,12);
+    getData(1, 30);
   }, [getData]);
- 
- const handleSearch = (name) =>{ getSearchData(name) }
-  
 
+  const handleSearch = (name) => {
+    getSearchData(name);
+  };
 
+  const handleLoadMore = () => {
+    setCantToShow(cantToShow + 3);
+  };
 
   return (
     <div>
@@ -63,28 +67,21 @@ const App = () => {
       ) : (
         <div className={styles["fondo"]}>
           <Header />
-          <Hero handleSearch={handleSearch}/>
+          <Hero handleSearch={handleSearch} />
           <div className={styles["contenedor"]}>
-            
             <h1>Character cards</h1>
             <div className="columns is-multiline is-centered">
-              {data.map((character) => (
+              {data.map((character, index) => {
+                return index < cantToShow ? (
                 <Card character={character} />
-              ))}
+                ) : null
+              })}
             </div>
-            <h2
-              onClick={() => {
-                getData(1, 24);
-              }}
-            >
-              Ver mas
-            </h2>
+            {cantToShow < data.length ? <h2 onClick={handleLoadMore}>Ver mas</h2> : <h2>No hay mas</h2>}
           </div>
           <Footer />
         </div>
       )}
-      
-      
     </div>
   );
 };
